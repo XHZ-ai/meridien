@@ -510,7 +510,7 @@ export function Discovery({ session }: DiscoveryProps) {
               I want an AI tool to...
             </h1>
             
-            {/* Modern Search Container */}
+            {/* Modern Search Container with Rounded Design */}
             <div className="relative max-w-[640px] mx-auto">
               <div className="relative flex items-center">
                 <input 
@@ -519,9 +519,9 @@ export function Discovery({ session }: DiscoveryProps) {
                   placeholder="Describe a task..."
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
-                  className="w-full px-6 py-4 rounded-full bg-white border border-gray-200 
-                    focus:border-text-primary focus:outline-none transition-all duration-300 text-base
-                    placeholder:text-gray-400 pr-16 shadow-sm"
+                  className="w-full px-6 py-4 rounded-[24px] bg-white border border-gray-200 
+                    focus:border-teal-500 focus:outline-none transition-all duration-300 text-base
+                    placeholder:text-gray-400 pr-16 shadow-sm backdrop-blur-sm"
                   onKeyDown={(e) => {
                     if (e.key === 'Enter') {
                       handleSearch();
@@ -532,14 +532,14 @@ export function Discovery({ session }: DiscoveryProps) {
                 <button
                   onClick={handleSearch}
                   disabled={!searchQuery.trim() || isSearching}
-                  className={`absolute right-2.5 w-10 h-10 flex items-center justify-center rounded-full transition-all
+                  className={`absolute right-2.5 w-12 h-12 flex items-center justify-center rounded-[24px] transition-all
                     ${searchQuery.trim() && !isSearching 
-                      ? 'bg-black text-white hover:bg-black/90' 
+                      ? 'bg-teal-600 text-white hover:bg-teal-700' 
                       : 'bg-gray-200 text-gray-400 cursor-not-allowed'}`}
                   aria-label="Search"
                 >
                   {isSearching ? (
-                    <div className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin" />
+                    <div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin" />
                   ) : (
                     <ArrowRight className="w-5 h-5" />
                   )}
@@ -555,7 +555,7 @@ export function Discovery({ session }: DiscoveryProps) {
                         matchScore: undefined
                       })));
                     }}
-                    className="absolute right-[60px] p-1.5 hover:bg-gray-100 rounded-full transition-colors"
+                    className="absolute right-[60px] p-1.5 hover:bg-gray-100 rounded-[24px] transition-colors"
                     aria-label="Clear search"
                   >
                     <X className="w-4 h-4 text-gray-400" />
@@ -567,16 +567,16 @@ export function Discovery({ session }: DiscoveryProps) {
               <div className="hidden md:flex items-center justify-center mt-8">
                 <button
                   onClick={() => setShowFreeOnly(!showFreeOnly)}
-                  className={`px-4 py-2.5 rounded-full transition-all duration-300 flex items-center gap-2 text-sm
+                  className={`px-4 py-2.5 rounded-[24px] transition-all duration-300 flex items-center gap-2 text-sm
                     shadow-sm hover:shadow-md hover:scale-[1.02] active:scale-[0.98]
                     ${showFreeOnly 
-                      ? 'bg-gradient-to-br from-[#292929] to-[#1a1a1a] text-white border border-black/10' 
-                      : 'bg-white text-[#666666] border border-gray-200 hover:border-gray-300 hover:text-[#292929]'}`}
+                      ? 'bg-gradient-to-br from-teal-600 to-teal-800 text-white border border-teal-700' 
+                      : 'bg-white text-gray-600 border border-gray-200 hover:border-teal-300 hover:text-teal-700'}`}
                 >
                   <span>Free Mode</span>
                   <div className={`w-3 h-3 rounded-full transition-all duration-300 ${
                     showFreeOnly 
-                      ? 'bg-emerald-400 scale-100' 
+                      ? 'bg-white scale-100' 
                       : 'bg-gray-300 scale-90'
                   }`} />
                 </button>
@@ -584,7 +584,7 @@ export function Discovery({ session }: DiscoveryProps) {
             </div>
           </div>
           
-          {/* Mobile Category Pills */}
+          {/* Mobile Category Pills with Improved Design */}
           {isMobile && (
             <div className="mb-6">
               <div className="overflow-x-auto hide-scrollbar pb-2">
@@ -593,11 +593,11 @@ export function Discovery({ session }: DiscoveryProps) {
                     <button
                       key={category.id}
                       onClick={() => handleCategorySelect(category.id)}
-                      className={`py-2 px-4 rounded-full text-sm font-medium whitespace-nowrap shadow-sm
+                      className={`py-2 px-4 rounded-[24px] text-sm font-medium whitespace-nowrap shadow-sm
                         ${selectedCategories.includes(category.id)
-                          ? 'bg-[#292929] text-white'
-                          : 'bg-white text-[#292929] border border-gray-200'
-                        } transition-all duration-300`}
+                          ? 'bg-teal-600 text-white'
+                          : 'bg-white text-teal-600 border border-teal-200'
+                        } transition-all duration-300 hover:bg-teal-100`}
                     >
                       {category.name}
                     </button>
@@ -607,7 +607,7 @@ export function Discovery({ session }: DiscoveryProps) {
             </div>
           )}
           
-          {/* Desktop Category Carousel */}
+          {/* Desktop Category Carousel with Improved Design */}
           {!isMobile && (
             <div className="mb-8 relative hidden md:block">
               {/* Left Arrow */}
@@ -622,8 +622,8 @@ export function Discovery({ session }: DiscoveryProps) {
                       });
                     }
                   }}
-                  className="w-10 h-10 bg-white rounded-full shadow-lg border border-gray-200
-                    flex items-center justify-center text-gray-600"
+                  className="w-12 h-12 bg-white rounded-[24px] shadow-lg border border-gray-200
+                    flex items-center justify-center text-teal-600 hover:bg-teal-50 transition-all duration-300"
                 >
                   <ArrowRight className="w-5 h-5 rotate-180" />
                 </button>
@@ -636,45 +636,18 @@ export function Discovery({ session }: DiscoveryProps) {
                   <div
                     key={category.id}
                     onClick={() => handleCategorySelect(category.id)}
-                    className={`group bg-white rounded-[20px] p-6 border transition-all duration-300 cursor-pointer
+                    className={`group bg-white rounded-[24px] p-6 border transition-all duration-300 cursor-pointer
                       min-w-[320px] max-w-[320px] flex flex-col gap-4 hover:-translate-y-1 active:translate-y-0
                       ${
                         selectedCategory === category.id 
-                          ? `ring-2 ring-${
-                              category.id === 'Automatisation' ? 'indigo' : 
-                              category.id === 'Contenu & Création' ? 'rose' :
-                              category.id === 'Organisation & Productivité' ? 'emerald' :
-                              category.id === 'Recherche & Analyse' ? 'amber' :
-                              category.id === 'Développement & Code' ? 'cyan' :
-                              category.id === 'Communication & IA Générative' ? 'violet' :
-                              category.id === 'Design & Visuels' ? 'fuchsia' :
-                              category.id === 'Business & Stratégie' ? 'blue' :
-                              'gray'}-500/40 shadow-lg bg-gradient-to-br from-${
-                              category.id === 'Automatisation' ? 'indigo' : 
-                              category.id === 'Contenu & Création' ? 'rose' :
-                              category.id === 'Organisation & Productivité' ? 'emerald' :
-                              category.id === 'Recherche & Analyse' ? 'amber' :
-                              category.id === 'Développement & Code' ? 'cyan' :
-                              category.id === 'Communication & IA Générative' ? 'violet' :
-                              category.id === 'Design & Visuels' ? 'fuchsia' :
-                              category.id === 'Business & Stratégie' ? 'blue' :
-                              'gray'}-50/40 to-white/90 border-transparent`
-                          : 'border-gray-200 hover:border-gray-300 shadow-card hover:shadow-lg'}`}
+                          ? `ring-2 ring-teal-500/40 shadow-lg bg-gradient-to-br from-teal-50/40 to-white/90 border-teal-200`
+                          : 'border-gray-200 hover:border-teal-300 shadow-card hover:shadow-lg'}`}
                   >
                     <div className="flex items-center gap-3">
                       <div className={`w-12 h-12 flex items-center justify-center
-                        transition-all duration-300 rounded-xl ${
+                        transition-all duration-300 rounded-[24px] ${
                           selectedCategory === category.id
-                            ? `bg-${
-                                category.id === 'Automatisation' ? 'indigo' : 
-                                category.id === 'Contenu & Création' ? 'rose' :
-                                category.id === 'Organisation & Productivité' ? 'emerald' :
-                                category.id === 'Recherche & Analyse' ? 'amber' :
-                                category.id === 'Développement & Code' ? 'cyan' :
-                                category.id === 'Communication & IA Générative' ? 'violet' :
-                                category.id === 'Design & Visuels' ? 'fuchsia' :
-                                category.id === 'Business & Stratégie' ? 'blue' :
-                                'gray'}-100/90  shadow-sm`
+                            ? `bg-teal-100/90 shadow-sm`
                             : category.id === 'Automatisation' ? 'text-indigo-600' : // Automatisation
                               category.id === 'Contenu & Création' ? 'text-rose-600' : // Contenu & Création
                               category.id === 'Organisation & Productivité' ? 'text-emerald-600' : // Organisation & Productivité
@@ -689,20 +662,12 @@ export function Discovery({ session }: DiscoveryProps) {
                       </div>
                       <h3 className={`text-lg font-semibold transition-colors duration-300 ${
                         selectedCategory === category.id 
-                          ? category.id === 'Automatisation' ? 'text-indigo-700' :
-                            category.id === 'Contenu & Création' ? 'text-rose-700' :
-                            category.id === 'Organisation & Productivité' ? 'text-emerald-700' :
-                            category.id === 'Recherche & Analyse' ? 'text-amber-700' :
-                            category.id === 'Développement & Code' ? 'text-cyan-700' :
-                            category.id === 'Communication & IA Générative' ? 'text-violet-700' :
-                            category.id === 'Design & Visuels' ? 'text-fuchsia-700' :
-                            category.id === 'Business & Stratégie' ? 'text-blue-700' :
-                            'text-gray-700'
-                          : 'text-text-primary'
+                          ? 'text-teal-700'
+                          : 'text-teal-600'
                       }`}>{category.name}</h3>
                     </div>
                     <p className={`text-sm transition-colors duration-300 ${
-                      selectedCategory === category.id ? 'text-text-primary' : 'text-text-secondary'
+                      selectedCategory === category.id ? 'text-teal-800' : 'text-teal-500'
                     }`}>{category.description}</p>
                   </div>
                 ))}
@@ -721,8 +686,8 @@ export function Discovery({ session }: DiscoveryProps) {
                       });
                     }
                   }}
-                  className="w-10 h-10 bg-white rounded-full shadow-lg border border-gray-200
-                    flex items-center justify-center text-gray-600"
+                  className="w-12 h-12 bg-white rounded-[24px] shadow-lg border border-gray-200
+                    flex items-center justify-center text-teal-600 hover:bg-teal-50 transition-all duration-300"
                 >
                   <ArrowRight className="w-5 h-5" />
                 </button>
@@ -731,7 +696,7 @@ export function Discovery({ session }: DiscoveryProps) {
           )}
 
           {showingSearchResults ? (
-            <div className="bg-white rounded-[20px] p-6 md:p-8 border border-gray-200 shadow-card animate-fade-scale">
+            <div className="bg-white rounded-[24px] p-6 md:p-8 border border-gray-200 shadow-card animate-fade-scale">
               <div className="flex items-center justify-between mb-6">
                 <h2 className="text-xl font-semibold text-text-primary">Search Results</h2>
                 <span className="text-sm text-text-secondary">
@@ -740,7 +705,7 @@ export function Discovery({ session }: DiscoveryProps) {
               </div>
               
               {filteredTools.length === 0 ? (
-                <div className="bg-gray-50 rounded-[20px] p-8 text-center border border-gray-200 max-w-md mx-auto">
+                <div className="bg-gray-50 rounded-[24px] p-8 text-center border border-gray-200 max-w-md mx-auto">
                   <Compass className="w-12 h-12 text-button/50 mx-auto mb-4" />
                   <h3 className="text-xl font-semibold text-text-primary mb-2">No matching tools found</h3>
                   <p className="text-text-secondary mb-4">
@@ -748,7 +713,7 @@ export function Discovery({ session }: DiscoveryProps) {
                   </p>
                   <button
                     onClick={clearFilters}
-                    className="px-4 py-2 bg-button text-white rounded-[20px] hover:bg-button/90 transition-colors"
+                    className="px-4 py-2 bg-button text-white rounded-[24px] hover:bg-button/90 transition-colors"
                   >
                     Clear Filters
                   </button>
@@ -798,11 +763,11 @@ export function Discovery({ session }: DiscoveryProps) {
           ) : (
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
               {error && (
-                <div className="bg-red-500/10 border border-red-500/20 rounded-[20px] p-6 text-center">
+                <div className="bg-red-500/10 border border-red-500/20 rounded-[24px] p-6 text-center">
                   <p className="text-red-600 mb-4">{error}</p>
                   <button
                     onClick={() => window.location.reload()}
-                    className="px-4 py-2 bg-red-500/20 text-red-600 rounded-[20px] hover:bg-red-500/30 transition-colors"
+                    className="px-4 py-2 bg-red-500/20 text-red-600 rounded-[24px] hover:bg-red-500/30 transition-colors"
                   >
                     Try Again
                   </button>
