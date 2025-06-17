@@ -1,0 +1,12 @@
+# Supprimer les migrations inutiles du contexte
+supabase/migrations/*
+
+# Composants purement visuels / UI non critiques
+src/components/SkeletonLoader.tsx
+src/components/Toast.tsx
+src/components/LoadingScreen.tsx
+src/components/TypewriterEffect.tsx
+src/components/TypewriterText.tsx
+
+# Assets statiques (logos IA)
+public/logos/*

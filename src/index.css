@@ -1,0 +1,531 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  background: #f3f5f7;
+  color-scheme: light;
+}
+
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image: 
+    linear-gradient(to right, rgba(0, 0, 0, 0.05) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(0, 0, 0, 0.05) 1px, transparent 1px);
+  background-size: 24px 24px;
+  mask-image: radial-gradient(circle at center, black, transparent 80%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Add radial gradient background */
+.bg-gradient-radial {
+  background-image: radial-gradient(
+    circle at center,
+    var(--tw-gradient-from) 0%,
+    var(--tw-gradient-via) 50%,
+    var(--tw-gradient-to) 100%
+  );
+}
+
+@import '@fontsource/instrument-sans/400.css';
+@import '@fontsource/instrument-sans/500.css';
+@import '@fontsource/instrument-sans/600.css';
+@import '@fontsource/instrument-sans/700.css';
+
+@layer base {
+  @keyframes fadeIn {
+    from { 
+      opacity: 0; 
+      transform: translateY(20px); 
+      filter: blur(10px);
+    }
+    to { 
+      opacity: 1; 
+      transform: translateY(0);
+      filter: blur(0);
+    }
+  }
+
+  @keyframes slideUp {
+    from { 
+      opacity: 0;
+      transform: translateY(30px);
+      filter: blur(5px);
+    }
+    to { 
+      opacity: 1;
+      transform: translateY(0);
+      filter: blur(0);
+    }
+  }
+  
+  @keyframes softGlow {
+    0%, 100% { text-shadow: 0 1px 2px rgba(0,0,0,0.1); }
+    50% { text-shadow: 0 1px 2px rgba(0,0,0,0.15); }
+  }
+
+  @keyframes shine {
+    from { transform: translateX(-100%); }
+    50% { transform: translateX(100%); }
+    to { transform: translateX(100%); }
+  }
+  
+  @keyframes float {
+    0% { transform: translate(-50%, -50%) rotate(0deg) translateY(0px); }
+    25% { transform: translate(-50%, -50%) rotate(90deg) translateY(10px); }
+    50% { transform: translate(-50%, -50%) rotate(180deg) translateY(0px); }
+    75% { transform: translate(-50%, -50%) rotate(270deg) translateY(-10px); }
+    100% { transform: translate(-50%, -50%) rotate(360deg) translateY(0px); }
+  }
+
+  @keyframes shimmer {
+    0% {
+      transform: translateX(-100%);
+    }
+    100% {
+      transform: translateX(100%);
+    }
+  }
+
+  @keyframes shrink {
+    from { transform: scaleX(1); }
+    to { transform: scaleX(0); }
+  }
+
+  @keyframes creditPulse {
+    0%, 100% { 
+      transform: scale(1);
+      box-shadow: 0 0 0 0 rgba(59, 130, 246, 0.4);
+    }
+    50% { 
+      transform: scale(1.05);
+      box-shadow: 0 0 0 10px rgba(59, 130, 246, 0);
+    }
+  }
+
+  @keyframes creditDeduction {
+    0% { transform: translateY(0) scale(1); opacity: 1; }
+    50% { transform: translateY(-10px) scale(1.1); opacity: 0.8; }
+    100% { transform: translateY(-20px) scale(0.8); opacity: 0; }
+  }
+
+  /* ✅ ANIMATIONS SIDEBAR ROBUSTES */
+  @keyframes slideInFromLeft {
+    from {
+      transform: translateX(-100%);
+      opacity: 0;
+    }
+    to {
+      transform: translateX(0);
+      opacity: 1;
+    }
+  }
+
+  @keyframes slideOutToLeft {
+    from {
+      transform: translateX(0);
+      opacity: 1;
+    }
+    to {
+      transform: translateX(-100%);
+      opacity: 0;
+    }
+  }
+
+  /* ✅ ANIMATION FADE-IN OPTIMISÉE */
+  @keyframes fadeInOptimized {
+    from { 
+      opacity: 0; 
+      transform: translateY(10px);
+    }
+    to { 
+      opacity: 1; 
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes cinematicFadeIn {
+    0% {
+      opacity: 0;
+      transform: translateY(1.5rem) scale(0.98);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+  }
+
+  @keyframes warmGradient {
+    0%, 100% { 
+      background-position: 0% 50%;
+    }
+    50% { 
+      background-position: 100% 50%;
+    }
+  }
+}
+
+@keyframes fadeOutScale {
+  0% { 
+    opacity: 1;
+    transform: scale(1);
+    filter: blur(0);
+  }
+  100% { 
+    opacity: 0;
+    transform: scale(0.95);
+    filter: blur(10px);
+  }
+}
+
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(100%); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideIn {
+  from { opacity: 0; transform: translateX(-10px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes fadeScale {
+  0% { 
+    opacity: 0; 
+    transform: scale(0.95);
+    filter: blur(10px);
+  }
+  100% { 
+    opacity: 1; 
+    transform: scale(1);
+    filter: blur(0);
+  }
+}
+
+@keyframes floatIn {
+  0% { opacity: 0; transform: translateY(10px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translate(-50%, -20px);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, 0);
+  }
+}
+
+/* Scrollbar styling for conversation */
+.conversation-scroll::-webkit-scrollbar {
+  width: 4px;
+}
+
+.conversation-scroll::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.05);
+  border-radius: 2px;
+}
+
+.conversation-scroll::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.1);
+  border-radius: 2px;
+}
+
+.conversation-scroll::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 0, 0, 0.2);
+}
+
+@keyframes ping {
+  0% { transform: translate(-50%, -50%) scale(1); opacity: 1; }
+  75%, 100% { transform: translate(-50%, -50%) scale(2); opacity: 0; }
+}
+
+@keyframes iconFloat {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-2px); }
+}
+
+@keyframes softPing {
+  0% { transform: scale(0.95); opacity: 1; }
+  50% { transform: scale(1.2); opacity: 0.5; }
+  100% { transform: scale(0.95); opacity: 1; }
+}
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+.hide-scrollbar {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+
+@layer components {
+  .glow-effect {
+    @apply shadow-card;
+  }
+  
+  .glow-hover {
+    @apply transition-all duration-300 hover:shadow-card;
+  }
+  
+  .glow-active {
+    @apply shadow-card;
+  }
+  
+  .animate-slide-up {
+    animation: slideUp 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  }
+  
+  .animate-slide-in {
+    animation: slideIn 0.3s ease-out forwards;
+  }
+  
+  .animate-fade-scale {
+    animation: fadeScale 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  }
+  
+  .animate-fade-in-down {
+    animation: fadeInDown 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  }
+  
+  .animate-fade-out-scale {
+    animation: fadeOutScale 0.5s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+  }
+  
+  .hover\:shadow-text:hover {
+    text-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+  }
+  
+  .icon-float {
+    animation: iconFloat 3s ease-in-out infinite;
+  }
+  
+  .icon-ping {
+    animation: softPing 2s ease-in-out infinite;
+  }
+
+  .animate-credit-pulse {
+    animation: creditPulse 2s ease-in-out infinite;
+  }
+
+  .animate-credit-deduction {
+    animation: creditDeduction 0.8s ease-out forwards;
+  }
+
+  /* ✅ CLASSES SIDEBAR ANIMATIONS */
+  .animate-slide-in-left {
+    animation: slideInFromLeft 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  }
+
+  .animate-slide-out-left {
+    animation: slideOutToLeft 0.3s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+  }
+
+  /* ✅ ANIMATION FADE-IN OPTIMISÉE POUR LE MAIN */
+  .animate-fade-in {
+    animation: fadeInOptimized 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  }
+
+  .animate-cinematicFadeIn {
+    animation: cinematicFadeIn 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  }
+}
+
+html, body {
+  margin: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background: #f3f5f7;
+  color: #292929;
+  overflow-x: hidden;
+  min-height: 100vh;
+  touch-action: manipulation;
+}
+
+body {
+  font-family: 'Instrument Sans', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+#root {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: #f3f5f7;
+}
+
+button, a, input, textarea {
+  touch-action: manipulation;
+  transform: translateZ(0);
+  -webkit-font-smoothing: antialiased;
+  will-change: transform, opacity;
+  border-radius: 10px;
+}
+
+.backface-hidden {
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  transform: translateZ(0);
+}
+
+button:active {
+  transform: scale(0.98);
+}
+
+button:not(:disabled):hover {
+  transform: translateY(-1px);
+}
+
+/* Improve touch target sizes for mobile */
+@media (max-width: 768px) {
+  button, a[role="button"] {
+    min-height: 44px;
+    min-width: 44px;
+    touch-action: manipulation;
+  }
+  
+  input, textarea, select {
+    min-height: 44px;
+    font-size: 16px !important; /* Prevent zoom on focus */
+  }
+}
+
+/* ✅ STICKY NAVIGATION OPTIMISÉE */
+.sticky-nav {
+  animation: slideIn 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  position: fixed;
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  will-change: transform;
+  z-index: 9999;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
+}
+
+@media (max-width: 768px) {
+  .sticky-nav {
+    top: auto;
+    bottom: 4px;
+    height: auto !important;
+    width: calc(100% - 32px) !important;
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.05);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.1);
+  border-radius: 3px;
+  transition: all 0.3s ease;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 0, 0, 0.2);
+}
+
+/* Prevent text size adjustment on orientation change */
+html {
+  -webkit-text-size-adjust: 100%;
+}
+
+/* Remove tap highlight on iOS */
+* {
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* Fix for mobile 100vh issue */
+@supports (-webkit-touch-callout: none) {
+  .min-h-screen {
+    min-height: -webkit-fill-available;
+  }
+}
+
+/* Improve focus states for accessibility */
+:focus-visible {
+  outline: 2px solid rgba(43, 43, 43, 0.5);
+  outline-offset: 2px;
+}
+
+/* Better form element styling for light mode */
+input:-webkit-autofill,
+input:-webkit-autofill:hover, 
+input:-webkit-autofill:focus {
+  -webkit-text-fill-color: #292929;
+  transition: background-color 5000s ease-in-out 0s;
+  caret-color: #292929;
+}
+
+/* Prevent overflow issues with long text */
+.break-words {
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  -ms-word-break: break-all;
+  word-break: break-word;
+}
+
+/* Prevent iOS zoom on input focus */
+@media screen and (max-width: 768px) {
+  input, select, textarea {
+    font-size: 16px !important;
+  }
+}
+
+/* Mobile-first layout class */
+.mobile-container {
+  width: 100%;
+  max-width: 420px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+/* iPhone-specific fixes for bottom bar issues */
+@supports (-webkit-touch-callout: none) {
+  .fixed-ios-bottom {
+    bottom: 0;
+    padding-bottom: env(safe-area-inset-bottom, 0);
+  }
+  
+  /* New class for iOS Safari specific bottom padding */
+  .safe-area-bottom {
+    padding-bottom: env(safe-area-inset-bottom, 0);
+  }
+}
+
+/* Fix for mobile viewport height issues */
+.mobile-vh-fix {
+  height: -webkit-fill-available;
+  height: -moz-available;
+  height: fill-available;
+} 
+
+@keyframes spin-loader {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.animate-spin-loader {
+  animation: spin-loader 1.4s linear infinite;
+}
+
